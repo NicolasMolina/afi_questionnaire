@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140331135650) do
+ActiveRecord::Schema.define(version: 20140331142654) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -45,5 +45,33 @@ ActiveRecord::Schema.define(version: 20140331135650) do
 
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+
+  create_table "styles", force: true do |t|
+    t.string   "name"
+    t.string   "identifier"
+    t.string   "color"
+    t.string   "print_preference"
+    t.string   "fabric"
+    t.string   "silhoutte"
+    t.boolean  "skirt_aline"
+    t.boolean  "skirt_pencil"
+    t.boolean  "skirt_high_waist"
+    t.boolean  "pants_wide_leg"
+    t.boolean  "pants_pencilskinny"
+    t.boolean  "pants_straightleg"
+    t.boolean  "coats_jackets_fitted"
+    t.boolean  "coats_jackets_voluminous"
+    t.boolean  "shirts_sleeveless"
+    t.boolean  "shirts_withsleeves"
+    t.boolean  "dresses_shift"
+    t.boolean  "dresses_flare"
+    t.boolean  "dresses_wrap"
+    t.string   "functionality"
+    t.string   "size_fit"
+    t.string   "size_top"
+    t.string   "size_bottom"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

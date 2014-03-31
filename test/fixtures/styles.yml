@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  identifier: MyString
+  color: MyString
+  print_preference: MyString
+  fabric: MyString
+  silhoutte: MyString
+  skirt_aline: false
+  functionality: MyString
+  size_fit: MyString
+  size_top: MyString
+  size_bottom: MyString
+
+two:
+  name: MyString
+  identifier: MyString
+  color: MyString
+  print_preference: MyString
+  fabric: MyString
+  silhoutte: MyString
+  skirt_aline: false
+  functionality: MyString
+  size_fit: MyString
+  size_top: MyString
+  size_bottom: MyString
