@@ -51,6 +51,17 @@ body {
 	height: 60px;
 }
 
+.input_group_checkbox7 {
+	padding: 10px 5px 0px 5px;
+	height: 100px;
+	padding: 0 0 0 209px;
+}
+
+.input_group_checkbox8 {
+	padding: 10px 5px 0px 5px;
+	height: 90px;
+
+}
 
 #container .label {
 	font-family: 'Ubuntu Condensed';
@@ -60,6 +71,17 @@ body {
 	width: 200px;
 	height: 26px;
 	padding: 5px 4px 0 0;
+}
+
+.label2 {
+	float: left;
+
+	
+}
+
+.label2 ul {
+	float: left;
+
 }
 
 .input {
@@ -75,6 +97,7 @@ body {
 .help_text {
 	padding: 0 0 0 209px;
 	height: 15px;
+	width: 500px;
 }
 
 .line {
@@ -117,7 +140,7 @@ body {
 
 <div style="width: 1024px; margin: 0 auto;">
 	
-	<p style="font-size:33px; font-family:Ubuntu condensed; text-align: center; padding-top: 10px;">AFI Style profile <br /><br /> </p> 
+	<p style="font-size:33px; font-family:Ubuntu condensed; text-align: center; padding-top: 50px;">AFI Style profile <br /><br /> </p> 
 </div>
 <div id="container">
 	
@@ -178,7 +201,7 @@ body {
 		</div>
 		
 			
-<!-- CHECKBOX: which shows -->
+<!-- CHECKBOX: Style indetifiers -->
 			<div class="input_group_checkbox">
 							<div class="label">
 								<%= label_tag(:style_indentifiers, "Style Indentifiers:", :class => "text right") %>
@@ -342,6 +365,9 @@ body {
 		<%= image_tag("bg-divider.png") %>
 		</div>
 						
+						
+						
+						
 <!-- TEXT: styles /silhouttes -->
 						
 			<div class="input_group_checkbox4">
@@ -363,105 +389,147 @@ body {
 								
 
 				<p style="font-size:15px; font-family:Ubuntu condensed; margin-left:80px; padding-top: 20px;"> Kindly indicate, by selecting Yes / No, which silhouettes you feel comfortable in. Please comment on each silhouette. </p>
+				<br>
 				
-					<p style="font-size:15px; font-family:Ubuntu condensed; margin-left:80px; padding-top: 20px;"> Skirt. </p>
+					<p style="font-size:15px; font-family:Ubuntu condensed; margin-left:150px; padding-top: 20px;"> Skirt. </p>
 				
-				<div class="input_group_checkbox4">
-								<div class="label">
+				<div class="input_group_checkbox7">
+								<div class="label2">
 									 A-line?
 									 <%= select_tag :skirt_skirt, "<option selected='selected'>Yes</option><option>No</option>".html_safe %>
 						
 								</div>
+								<br>
+								<br>
 								
-								<div class="label">
-									 Pencil?
+								<div class="label2">
+									  Pencil?
 									 <%= select_tag :pencil_skirt, "<option selected='selected'>Yes</option><option>No</option>".html_safe %>
 						
 								</div>
 								
-								<div class="label">
+								<br>
+								<br>
+								<div class="label2">
 									 High-waist?
 									 <%= select_tag :high_waist_skirt, "<option selected='selected'>Yes</option><option>No</option>".html_safe %>
 						
 								</div>
 								
-					<p style="font-size:15px; font-family:Ubuntu condensed; margin-left:80px; padding-top: 20px;"> Pants. </p>
+								<br>
+								<br>
+								</div>
 								
-								<div class="input_group_checkbox4">
+								<p style="font-size:15px; font-family:Ubuntu condensed; margin-left:150px; padding-top: 20px;"> 									Pants. </p>
+								
+								<div class="input_group_checkbox7">
 												<div class="label">
 													 Wide-leg?
 													 <%= select_tag :wide_leg_pants, "<option selected='selected'>Yes</option><option>No</option>".html_safe %>
 						
 												</div>
-												
+												<br>
+												<br>
 								
 												<div class="label">
 													 Pencil (skinny)
 													 <%= select_tag :pencil_pants, "<option selected='selected'>Yes</option><option>No</option>".html_safe %>
 						
 												</div>
-								
+
+								<br>
+								<br>
+
 												<div class="label">
 													 Straight-leg?
 													 <%= select_tag :straight_leg_pants, "<option selected='selected'>Yes</option><option>No</option>".html_safe %>
 						
 												</div>
 												
+												<br>
+												<br>
 												
-					<p style="font-size:15px; font-family:Ubuntu condensed; margin-left:80px; padding-top: 20px;"> Coats / Jackets. </p>
+												</div>
+												
+					<p style="font-size:15px; font-family:Ubuntu condensed; margin-left:150px; padding-top: 20px;"> Coats / Jackets. </p>
 								
-								<div class="input_group_checkbox4">
+								<div class="input_group_checkbox7">
 												<div class="label">
 													 Fitted
-													 <%= select_tag :fitted_coats, "<option selected='selected'>Yes</option><option>No</option>".html_safe %>
+													 <%= select_tag :fitted_coats, "<option 													selected='selected'>Yes</option><option>No</option>".html_safe %>
 						
 												</div>
+												
+												<br>
+												<br>
 								
 												<div class="label">
 													 Voluminous
 													 <%= select_tag :voluminous_coats, "<option selected='selected'>Yes</option><option>No</option>".html_safe %>
 						
 												</div>
+												
+												<br>
+												<br>
+								</div>
 								
+							
 
-					<p style="font-size:15px; font-family:Ubuntu condensed; margin-left:80px; padding-top: 20px;"> Shirts. </p>
+					<p style="font-size:15px; font-family:Ubuntu condensed; margin-left:150px; padding-top: 20px;"> Shirts. </p>
 								
-								<div class="input_group_checkbox4">
+								<div class="input_group_checkbox7">
 												<div class="label">
 													 Sleeveless
 													 <%= select_tag :sleeveless_shirts, "<option selected='selected'>Yes</option><option>No</option>".html_safe %>
 						
 												</div>
+												
+												<br>
+												<br>
 								
 												<div class="label">
 													 With Sleeves
 													 <%= select_tag :with_sleeves_shirts, "<option selected='selected'>Yes</option><option>No</option>".html_safe %>
 						
 												</div>
+												
+												<br>
+												<br>
+												
+									</div>
 								
 								
-				<p style="font-size:15px; font-family:Ubuntu condensed; margin-left:80px; padding-top: 20px;"> Dresses. </p>
+				<p style="font-size:15px; font-family:Ubuntu condensed; margin-left:150px; padding-top: 20px;"> Dresses. </p>
 								
-											<div class="input_group_checkbox4">
+											<div class="input_group_checkbox7">
 															<div class="label">
 																 Shift
 																 <%= select_tag :shift_dresses, "<option selected='selected'>Yes</option><option>No</option>".html_safe %>
 						
 															</div>
+															
+															<br>
+															<br>
 								
 															<div class="label">
 																 Flare
 																 <%= select_tag :flare_dresses, "<option selected='selected'>Yes</option><option>No</option>".html_safe %>
 						
 															</div>
+															
+															<br>
+															<br>
 								
 															<div class="label">
 																Wrap
 									 <%= select_tag :wrap_dresses, "<option selected='selected'>Yes</option><option>No</option>".html_safe %>
 
-								</div>
+															</div>
+															
+															<br>
+															<br>
 								
-							
+											</div>
 
 										
 										<div class="input_group">
@@ -476,13 +544,20 @@ body {
 											<i>Please comment on each silhouette..</i>
 										</div>
 						
+						
+					
+					</div>
+					
+						
+						
 	<div style="text-align: center;">
 	<%= image_tag("bg-divider.png") %>
 	</div>
 				
+			
 <!-- TEXT: Functionality -->			
 			
-			<div class="input_group_checkbox5">
+			<div class="input_group_checkbox8">
 							<div class="label">
 								<%= label_tag(:Functionality, "Functionality:", :class => "text right") %>
 							</div>
