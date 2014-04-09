@@ -1,1 +1,578 @@
-Hello.
+	<style>
+
+body {
+		background-image: url(/assets/bg.jpg); 
+	    background-repeat: no-repeat;
+		background-attachment:fixed;
+		background-size: 100%; 
+	}
+
+.border {
+	border: 1px solid red;
+}
+.text {
+	font-family: 'Ubuntu condensed';
+	font-size: 20px;
+	color: black;
+}
+
+.text .right {
+	text-align:right;
+}
+
+.input_group {
+	padding: 10px 5px 0px 5px;
+	height: 40px;
+	min_width: 900px;
+}
+
+.input_group_checkbox {
+	padding: 10px 5px 0px 5px;
+	height: 95px;
+}
+
+.input_group_checkbox2 {
+	padding: 10px 5px 0px 5px;
+	height: 220px;
+}
+
+.input_group_checkbox3 {
+	padding: 10px 5px 0px 5px;
+	height: 70px;
+}
+
+.input_group_checkbox4 {
+	padding: 10px 5px 0px 5px;
+	height: 50px;
+}
+
+.input_group_checkbox5 {
+	padding: 10px 5px 0px 5px;
+	height: 60px;
+}
+
+
+#container .label {
+	font-family: 'Ubuntu Condensed';
+}
+.label {
+	float: left;
+	width: 200px;
+	height: 26px;
+	padding: 5px 4px 0 0;
+}
+
+.input {
+	float: left;
+	width: 650px;
+
+}
+
+.input.file {
+	padding: 5px 0 0 0;
+}
+
+.help_text {
+	padding: 0 0 0 209px;
+	height: 15px;
+}
+
+.line {
+	height: 1px;
+	margin: 10px 0 10px 0;
+	padding: 10px 0 10px 0;
+	border-bottom: 1px solid #ba9915;
+}
+
+.flash {
+	font-size: 24px;
+}
+#container {
+	font-family: 'Ubuntu Condensed';
+	margin: 0 auto;
+	width: 900px;
+
+	
+}
+
+#mask {
+	position: absolute; 
+	top: 0; 
+	left: 0; 
+	height: 100%; 
+	width: 100%;
+	background: red;
+	display: none;
+}
+</style>
+
+<body>
+<div class="notice"><%= flash[:notice] %></div>
+<div style="width: 100%">
+	<% flash.each do |key, value| %>
+		<h3 style="text-align: center; padding: 20px 0 0 0; background: whitesmoke; height: 40px;"><%= value %></h3>
+	<% end %>
+</div>
+
+<div style="width: 1024px; margin: 0 auto;">
+	<div>
+		<%= image_tag("afi_form_header.jpg") %>
+		<div style="position: absolute; top: 360px; right:190px; z-index: 100;">
+			<%= image_tag("afi_logo.png") %>
+		</div>
+		<div style="position: absolute; top: 50px; right:190px; z-index: 100;">
+			<%= image_tag("merc_logo.png") %>
+		</div>
+		
+	</div>
+	<p style="font-size:33px; font-family:Ubuntu condensed; text-align: center; padding-top: 10px;">AFI Style profile <br /><br /> </p> 
+</div>
+<div id="container">
+	
+	<div class="">
+		<%= form_tag("/submit_form", multipart: true) do %>
+<!-- CHECKBOX: which shows -->
+		<!--	<div class="input_group_checkbox">
+				<div class="label">
+					<%= label_tag(:designer_name, "Which shows:", :class => "text right") %>
+				</div>
+			  	<div class="input">
+					<%= check_box_tag(:march) %>
+					<%= label_tag(:march, "Mercedes-Benz Fashion Week Joburg (MBFWJ) – Autumn/Winter - March (Closing Date: 9 December)") %>
+					<br />
+					<%= check_box_tag(:august) %>
+					<%= label_tag(:august, "Mercedes-Benz Fashion Week Cape Town (MBFWCT) Spring/Summer - August (Closing Date: 28 March 2014)") %>	
+					<br />	
+					<%= check_box_tag(:october) %>
+					<%= label_tag(:october, "Mercedes-Benz Fashion Week Africa (MBFWAFRICA) – Trans-seasonal - October (Closing Date: 2 May 2014)") %>		
+				</div>
+			</div>
+			<div class="help_text">
+				<i>Which shows are you applying for</i>
+			</div> -->
+<!-- TEXT: application type -->
+			<!-- <div class="input_group">
+				<div class="label">
+					<%= label_tag(:application_type, "Application Type:", :class => "text right") %>
+				</div>
+			  	<div class="input">
+					<%= text_field_tag(:application_type) %>
+				</div>
+			</div>
+			<div class="help_text">
+				<i>What is the application type</i>
+			</div> -->
+		<div style="text-align: center;">
+		<%= image_tag("bg-divider.png") %>
+		</div>
+
+			
+<!-- TEXT: Name		 -->
+			<div class="input_group">
+				<div class="label">
+					<%= label_tag(:name, "Full Name:", :class => "text right") %>
+
+				</div>
+			  	<div class="input">
+					<%= text_field_tag(:name) %>
+				</div>
+			</div>
+			<div class="help_text">
+				<i>Insert your full name:</i>
+			</div>
+		
+		<div style="text-align: center;">
+		<%= image_tag("bg-divider.png") %>
+		</div>
+		
+			
+<!-- CHECKBOX: which shows -->
+			<div class="input_group_checkbox">
+							<div class="label">
+								<%= label_tag(:style_indentifiers, "Style Indentifiers:", :class => "text right") %>
+							</div>
+						  	<div class="input">
+								<%= check_box_tag(:style_indentifiers_classic_elegant) %>
+								<%= label_tag(:style_indentifiers_classic_elegant, "Classic and elegant") %>
+								<br />
+								<%= check_box_tag(:style_indentifiers_bold_vibrant) %>
+								<%= label_tag(:style_indentifiers_bold_vibrant, "Bold and vibrant") %>	
+								<br />	
+								<%= check_box_tag(:style_indentifiers_edgy_trendy) %>
+								<%= label_tag(:style_indentifiers_edgy_trendy, "Edgy and trendy") %>	
+								<br />	
+								<%= check_box_tag(:style_indentifiers_feminine) %>
+								<%= label_tag(:style_indentifiers_feminine, "Feminine") %>
+								<br />	
+								<%= check_box_tag(:style_indentifiers_functional) %>
+								<%= label_tag(:style_indentifiers_functional, "Functional") %>	
+							</div>
+						</div>
+						<div class="help_text">
+							<i>Identify the two categories which best describe your style preference:</i>
+						</div> 
+			
+		<div style="text-align: center;">
+		<%= image_tag("bg-divider.png") %>
+		</div>
+			
+<!-- TEXT: Colour		 -->
+			<div class="input_group_checkbox2">
+							<div class="label">
+								<%= label_tag(:colours, "Colours:", :class => "text right") %>
+							</div>
+						  	<div class="input">
+								<%= check_box_tag(:colours_beige) %>
+								<%= label_tag(:colours_beige, "Beige") %>
+								<br />
+								<%= check_box_tag(:colours_black) %>
+								<%= label_tag(:colours_black, "Black") %>	
+								<br />	
+								<%= check_box_tag(:colours_blue) %>
+								<%= label_tag(:colours_blue, "Blue") %>	
+								<br />	
+								<%= check_box_tag(:colours_brown) %>
+								<%= label_tag(:colours_brown, "Brown") %>
+								<br />	
+								<%= check_box_tag(:colours_green) %>
+								<%= label_tag(:colours_green, "Green") %>	
+								<br />
+								<%= check_box_tag(:colours_grey) %>
+								<%= label_tag(:colours_grey, "Grey") %>	
+								<br />	
+								<%= check_box_tag(:colours_orange) %>
+								<%= label_tag(:colours_orange, "Orange") %>	
+								<br />	
+								<%= check_box_tag(:colours_pink) %>
+								<%= label_tag(:colours_pink, "Pink") %>
+								<br />	
+								<%= check_box_tag(:colours_purple) %>
+								<%= label_tag(:colours_purple, "Purple") %>
+								<br />	
+								<%= check_box_tag(:colours_red) %>
+								<%= label_tag(:colours_red, "Red") %>	
+								<br />	
+								<%= check_box_tag(:colours_white) %>
+								<%= label_tag(:colours_white, "White") %>
+								<br />	
+								<%= check_box_tag(:colours_yellow) %>
+								<%= label_tag(:colours_yellow, "Yellow") %>
+							</div>
+						</div>
+						<div class="help_text">
+							<i>Identify the three colours that make up the majority of wardrobe:</i>
+						</div>	
+			
+			<div class="input_group_checkbox3">
+							<div class="label">
+								<%= label_tag(:print_preference, "Prints you prefer:", :class => "text right") %>
+							</div>
+						  	<div class="input">
+								<%= check_box_tag(:print_preference_vibrant_geometric) %>
+								<%= label_tag(:print_preference_vibrant_geometric, "Vibrant and geometric") %>
+								<br />
+								<%= check_box_tag(:print_preference_feminine) %>
+								<%= label_tag(:print_preference_feminine, "Feminine (i.e. floral and paisley)") %>	
+								<br />	
+								<%= check_box_tag(:print_preference_no) %>
+								<%= label_tag(:print_preference_no, "No prints (solid colours)") %>
+									</div>
+									</div>
+								<div class="help_text">
+									<i>Which prints do you prefer?</i>
+								</div>
+			
+			<div style="text-align: center;">
+			<%= image_tag("bg-divider.png") %>
+			</div>
+				
+<!-- TEXT: Fabric		 -->
+			<div class="input_group_checkbox2">
+							<div class="label">
+								<%= label_tag(:fabric, "Fabric:", :class => "text right") %>
+							</div>
+						  	<div class="input">
+								<%= check_box_tag(:fabric_cotton) %>
+								<%= label_tag(:fabric_cotton, "Cotton") %>
+								<br />
+								<%= check_box_tag(:fabric_linen) %>
+								<%= label_tag(:fabric_linen, "Linen") %>	
+								<br />	
+								<%= check_box_tag(:fabric_silk) %>
+								<%= label_tag(:fabric_silk, "Silk") %>	
+								<br />	
+								<%= check_box_tag(:fabric_wool_knits) %>
+								<%= label_tag(:fabric_wool_knits, "Wool and Knits") %>
+								<br />	
+								<%= check_box_tag(:fabric_cashmere) %>
+								<%= label_tag(:fabric_cashmere, "Cashmere") %>	
+								<br />
+								<%= check_box_tag(:fabric_mohair) %>
+								<%= label_tag(:fabric_mohair, "Mohair") %>	
+								<br />	
+								<%= check_box_tag(:fabric_chiffon) %>
+								<%= label_tag(:fabric_chiffon, "Chiffon") %>	
+								<br />	
+								<%= check_box_tag(:fabric_crepe) %>
+								<%= label_tag(:fabric_crepe, "Crepe") %>
+								<br />	
+								<%= check_box_tag(:fabric_denim) %>
+								<%= label_tag(:fabric_denim, "Denim") %>
+								<br />	
+								<%= check_box_tag(:fabric_lace) %>
+								<%= label_tag(:fabric_lace, "Lace") %>	
+								<br />	
+								<%= check_box_tag(:fabric_leather) %>
+								<%= label_tag(:fabric_leather, "Leather") %>
+								<br />	
+								<%= check_box_tag(:fabric_satin) %>
+								<%= label_tag(:fabric_satin, "Satin") %>
+							</div>
+						</div>
+						<div class="help_text">
+							<i>Indicate which of the following fabrics you opt for:</i>
+						</div>					
+							
+<!-- TEXT: Notes on Fabric-->
+						<div class="input_group">
+							<div class="label">
+								<%= label_tag(:comments_fabric, "Notes:", :class => "text right") %>
+							</div>
+						  	<div class="input">
+								<%= text_field_tag(:comments_fabric) %>
+							</div>
+						</div>
+						<div class="help_text">
+							<i>Describe any notes you consider when looking at fabrics.</i>
+						</div>
+						
+		<div style="text-align: center;">
+		<%= image_tag("bg-divider.png") %>
+		</div>
+						
+<!-- TEXT: silhouttes -->
+						
+			<div class="input_group_checkbox4">
+							<div class="label">
+								<%= label_tag(:wardrobe_styles, "Styles/Silhouttes:", :class => "text right") %>
+							</div>
+						  	<div class="input">
+								<%= check_box_tag(:wardrobe_styles_dresses) %>
+								<%= label_tag(:wardrobe_styles_dresses, "Work dresses") %>
+								<br />
+								<%= check_box_tag(:wardrobe_styles_seperates) %>
+								<%= label_tag(:wardrobe_styles_seperates, "Separates (i.e. pants/skirts and tops)") %>	
+							
+									</div>
+									</div>
+								<div class="help_text">
+									<i>When shopping for your everyday wardrobe, which do you prefer?</i>
+								</div>
+								
+
+				<p style="font-size:15px; font-family:Ubuntu condensed; margin-left:80px; padding-top: 20px;"> Kindly indicate, by selecting Yes / No, which silhouettes you feel comfortable in. Please comment on each silhouette. </p>
+				
+					<p style="font-size:15px; font-family:Ubuntu condensed; margin-left:80px; padding-top: 20px;"> Skirt. </p>
+				
+				<div class="input_group_checkbox4">
+								<div class="label">
+									 A-line?
+									 <%= select_tag :skirt_skirt, "<option selected='selected'>Yes</option><option>No</option>".html_safe %>
+						
+								</div>
+								
+								<div class="label">
+									 Pencil?
+									 <%= select_tag :pencil_skirt, "<option selected='selected'>Yes</option><option>No</option>".html_safe %>
+						
+								</div>
+								
+								<div class="label">
+									 High-waist?
+									 <%= select_tag :high_waist_skirt, "<option selected='selected'>Yes</option><option>No</option>".html_safe %>
+						
+								</div>
+								
+					<p style="font-size:15px; font-family:Ubuntu condensed; margin-left:80px; padding-top: 20px;"> Pants. </p>
+								
+								<div class="input_group_checkbox4">
+												<div class="label">
+													 Wide-leg?
+													 <%= select_tag :wide_leg_pants, "<option selected='selected'>Yes</option><option>No</option>".html_safe %>
+						
+												</div>
+												
+								
+												<div class="label">
+													 Pencil (skinny)
+													 <%= select_tag :pencil_pants, "<option selected='selected'>Yes</option><option>No</option>".html_safe %>
+						
+												</div>
+								
+												<div class="label">
+													 Straight-leg?
+													 <%= select_tag :straight_leg_pants, "<option selected='selected'>Yes</option><option>No</option>".html_safe %>
+						
+												</div>
+												
+												
+					<p style="font-size:15px; font-family:Ubuntu condensed; margin-left:80px; padding-top: 20px;"> Coats / Jackets. </p>
+								
+								<div class="input_group_checkbox4">
+												<div class="label">
+													 Fitted
+													 <%= select_tag :fitted_coats, "<option selected='selected'>Yes</option><option>No</option>".html_safe %>
+						
+												</div>
+								
+												<div class="label">
+													 Voluminous
+													 <%= select_tag :voluminous_coats, "<option selected='selected'>Yes</option><option>No</option>".html_safe %>
+						
+												</div>
+								
+
+					<p style="font-size:15px; font-family:Ubuntu condensed; margin-left:80px; padding-top: 20px;"> Shirts. </p>
+								
+								<div class="input_group_checkbox4">
+												<div class="label">
+													 Sleeveless
+													 <%= select_tag :sleeveless_shirts, "<option selected='selected'>Yes</option><option>No</option>".html_safe %>
+						
+												</div>
+								
+												<div class="label">
+													 With Sleeves
+													 <%= select_tag :with_sleeves_shirts, "<option selected='selected'>Yes</option><option>No</option>".html_safe %>
+						
+												</div>
+								
+								
+				<p style="font-size:15px; font-family:Ubuntu condensed; margin-left:80px; padding-top: 20px;"> Dresses. </p>
+								
+											<div class="input_group_checkbox4">
+															<div class="label">
+																 Shift
+																 <%= select_tag :shift_dresses, "<option selected='selected'>Yes</option><option>No</option>".html_safe %>
+						
+															</div>
+								
+															<div class="label">
+																 Flare
+																 <%= select_tag :flare_dresses, "<option selected='selected'>Yes</option><option>No</option>".html_safe %>
+						
+															</div>
+								
+															<div class="label">
+																Wrap
+									 <%= select_tag :wrap_dresses, "<option selected='selected'>Yes</option><option>No</option>".html_safe %>
+
+								</div>
+								
+							
+
+										
+										<div class="input_group">
+											<div class="label">
+												<%= label_tag(:comment_silhoutte, "Comments:", :class => "text right") %>
+											</div>
+										  	<div class="input">
+												<%= text_field_tag(:comment_silhoutte) %>
+											</div>
+										</div>
+										<div class="help_text">
+											<i>Please comment on each silhouette..</i>
+										</div>
+						
+	<div style="text-align: center;">
+	<%= image_tag("bg-divider.png") %>
+	</div>
+				
+<!-- TEXT: Functionality -->			
+			
+			<div class="input_group_checkbox5">
+							<div class="label">
+								<%= label_tag(:Functionality, "Functionality:", :class => "text right") %>
+							</div>
+						  	<div class="input">
+								<%= check_box_tag(:functionality_versatile) %>
+								<%= label_tag(:functionality_versatile, "I buy pieces that are versatile and work with my existing wardrobe.") %>
+								<br />
+								<%= check_box_tag(:functionality_statement) %>
+								<%= label_tag(:functionality_statement, "I buy statement pieces.") %>	
+								<br />	
+								<%= check_box_tag(:functionality_classic) %>
+								<%= label_tag(:functionality_classic, "I buy classic pieces to allow for long-wear.") %>
+								<br />	
+								<%= check_box_tag(:functionality_all) %>
+								<%= label_tag(:functionality_all, "All of the above") %>
+									</div>
+									</div>
+								<div class="help_text">
+									<i>Which philosophy best describes your approach to purchasing clothing?</i>
+								</div>
+			
+		<div style="text-align: center;">
+		<%= image_tag("bg-divider.png") %>
+		</div>
+				
+<!-- TEXT: size -->
+						
+			<div class="input_group_checkbox4">
+							<div class="label">
+								<%= label_tag(:size_fit, "Size & Fit:", :class => "text right") %>
+							</div>
+						  	<div class="input">
+								<%= check_box_tag(:size_fit_tailored) %>
+								<%= label_tag(:size_fit_tailored, "Tailored (well-fitted)") %>
+								<br />
+								<%= check_box_tag(:size_fit_flowing) %>
+								<%= label_tag(:size_fit_flowing, "Flowing") %>	
+							
+									</div>
+									</div>
+								<div class="help_text">
+									<i>Which of the following fit options do you most prefer?</i>
+								</div>					
+
+
+<p style="font-size:15px; font-family:Ubuntu condensed; margin-left:80px; padding-top: 20px;"> Please indicate your size: </p>
+
+
+
+			<div class="input_group">
+				<div class="label">
+					<%= label_tag(:size_top, "Top:", :class => "text right") %>
+				</div>
+			  	<div class="input">
+					<%= text_field_tag(:size_top) %>
+				</div>
+			</div>
+			
+			<div class="input_group">
+				<div class="label">
+					<%= label_tag(:size_bottom, "Bottom:", :class => "text right") %>
+				</div>
+			  	<div class="input">
+					<%= text_field_tag(:size_bottom) %>
+					</div>
+					</div>
+					
+					<div class="line"></div>			
+						
+
+	  	<%= submit_tag "Submit", :style => "float: right;", :id => "submit_application"%>
+		<% end %>
+		<div style="height: 160px">
+		</div>		
+	</div>
+</div>
+</body>
+<script>
+// $(document).ready(function () {
+// 	$("#submit_application").on("click", function() {
+// 		$("#mask").show();
+// 	});	
+// });
+
+</script>

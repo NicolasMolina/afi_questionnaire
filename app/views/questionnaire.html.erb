@@ -1,0 +1,596 @@
+	<style>
+
+.border {
+	border: 1px solid red;
+}
+.text {
+	font-family: Helvetica;
+	font-size: 20px;
+	color: black;
+}
+
+.text .right {
+	text-align:right;
+}
+
+.input_group {
+	padding: 10px 5px 0px 5px;
+	height: 40px;
+	min_width: 900px;
+}
+
+.input_group_checkbox {
+	padding: 10px 5px 0px 5px;
+	height: 65px;
+}
+
+#container .label {
+	font-family: helvetica;
+}
+.label {
+	float: left;
+	width: 200px;
+	height: 26px;
+	padding: 5px 4px 0 0;
+}
+
+.input {
+	float: left;
+	width: 650px;
+
+}
+
+.input.file {
+	padding: 5px 0 0 0;
+}
+
+.help_text {
+	padding: 0 0 0 209px;
+	height: 15px;
+}
+
+.line {
+	height: 1px;
+	margin: 10px 0 10px 0;
+	border-bottom: 1px solid black;
+}
+
+.flash {
+	font-size: 24px;
+}
+#container {
+	font-family: helvetica;
+	margin: 0 auto;
+	width: 900px;
+}
+
+#mask {
+	position: absolute; 
+	top: 0; 
+	left: 0; 
+	height: 100%; 
+	width: 100%;
+	background: red;
+	display: none;
+}
+</style>
+
+<div style="width: 100%">
+	<% flash.each do |key, value| %>
+		<h3 style="text-align: center; padding: 20px 0 0 0; background: whitesmoke; height: 40px;"><%= value %></h3>
+	<% end %>
+</div>
+
+<div style="width: 1024px; margin: 0 auto;">
+	<div>
+		<%= image_tag("afi_form_header.jpg") %>
+		<div style="position: absolute; top: 360px; right:190px; z-index: 100;">
+			<%= image_tag("afi_logo.png") %>
+		</div>
+		<div style="position: absolute; top: 50px; right:190px; z-index: 100;">
+			<%= image_tag("merc_logo.png") %>
+		</div>
+		
+	</div>
+	<p style="font-size:33px; text-align: center; padding-top: 10px;">Thank you for your interest. <br /><br /> Please complete and submit by Monday 9 December 2013</p> 
+</div>
+<div id="container">
+	
+	<div class="">
+		<%= form_tag("/submit_form", multipart: true) do %>
+<!-- CHECKBOX: which shows -->
+			<div class="input_group_checkbox">
+				<div class="label">
+					<%= label_tag(:designer_name, "Which shows:", :class => "text right") %>
+				</div>
+			  	<div class="input">
+					<%= check_box_tag(:march) %>
+					<%= label_tag(:march, "Mercedes-Benz Fashion Week Joburg (MBFWJ) – Autumn/Winter - March (Closing Date: 9 December)") %>
+					<br />
+					<%= check_box_tag(:august) %>
+					<%= label_tag(:august, "Mercedes-Benz Fashion Week Cape Town (MBFWCT) Spring/Summer - August (Closing Date: 28 March 2014)") %>	
+					<br />	
+					<%= check_box_tag(:october) %>
+					<%= label_tag(:october, "Mercedes-Benz Fashion Week Africa (MBFWAFRICA) – Trans-seasonal - October (Closing Date: 2 May 2014)") %>		
+				</div>
+			</div>
+			<div class="help_text">
+				<i>Which shows are you applying for</i>
+			</div>
+<!-- TEXT: application type -->
+			<!-- <div class="input_group">
+				<div class="label">
+					<%= label_tag(:application_type, "Application Type:", :class => "text right") %>
+				</div>
+			  	<div class="input">
+					<%= text_field_tag(:application_type) %>
+				</div>
+			</div>
+			<div class="help_text">
+				<i>What is the application type</i>
+			</div> -->
+			<div class="line"></div>
+			<h1>DESIGNER INFORMATION</h1>
+<!-- TEXT: designer name		 -->
+			<div class="input_group">
+				<div class="label">
+					<%= label_tag(:designer_name, "Designer Name:", :class => "text right") %>
+				</div>
+			  	<div class="input">
+					<%= text_field_tag(:designer_name) %>
+				</div>
+			</div>
+			<div class="help_text">
+				<i>The name of the designer. Name and Surname or company</i>
+			</div>
+<!-- FILE: designer image -->
+			<div class="input_group">
+				<div class="label">
+					<%= label_tag(:designer_image, "Designer image:", :class => "text right") %>
+				</div>
+			  	<div class="input file">
+					<%= file_field_tag(:designer_image, :class => "") %>
+				</div>
+			</div>
+			<div class="help_text">
+				<i>The image of the designer</i>
+			</div>
+			<!-- TEXT: address -->
+						<div class="input_group">
+							<div class="label">
+								<%= label_tag(:address, "Address:", :class => "text right") %>
+							</div>
+						  	<div class="input">
+								<%= text_field_tag(:address) %>
+							</div>
+						</div>
+						<div class="help_text">
+							<i>Where do you live</i>
+						</div>
+<!-- TEXT: contact number -->
+			<div class="input_group">
+				<div class="label">
+					<%= label_tag(:contact_number, "Contact number:", :class => "text right") %>
+				</div>
+			  	<div class="input">
+					<%= text_field_tag(:contact_number) %>
+				</div>
+			</div>
+			<div class="help_text">
+				<i>Telephone number including country code, area code and number</i>
+			</div>
+<!-- TEXT: email address -->
+			<div class="input_group">
+				<div class="label">
+					<%= label_tag(:email_address, "Email address:", :class => "text right") %>
+				</div>
+			  	<div class="input">
+					<%= text_field_tag(:email_address) %>
+				</div>
+			</div>
+			<div class="help_text">
+				<i></i>
+			</div>
+<!-- TEXT: country of birth -->
+			<div class="input_group">
+				<div class="label">
+					<%= label_tag(:country_of_birth, "Country of birth:", :class => "text right") %>
+				</div>
+			  	<div class="input">
+					<%= text_field_tag(:country_of_birth) %>
+				</div>
+			</div>
+			<div class="help_text">
+				<i>In which country where you born</i>
+			</div>
+			<div class="line"></div>								
+			<h1>ADDITIONAL INFORMATION</h1> 
+<!-- TEXT: assistant's name -->
+			<div class="input_group">
+				<div class="label">
+					<%= label_tag(:name_of_assistant, "Assistant's name:", :class => "text right") %>
+				</div>
+			  	<div class="input">
+					<%= text_field_tag(:name_of_assistant) %>
+				</div>
+			</div>
+			<div class="help_text">
+				<i>The full name of your assistant if you have one</i>
+			</div>
+<!-- TEXT: assistant's contact number -->
+			<div class="input_group">
+				<div class="label">
+					<%= label_tag(:contact_number_of_assistant, "Contact number:", :class => "text right") %>
+				</div>
+			  	<div class="input">
+					<%= text_field_tag(:contact_number_of_assistant) %>
+				</div>
+			</div>
+			<div class="help_text">
+				<i>Assistant's telephone number including country code, area code and number</i>
+			</div>
+<!-- TEXT: accountant's name -->
+			<div class="input_group">
+				<div class="label">
+					<%= label_tag(:name_of_accountant, "Accountant:", :class => "text right") %>
+				</div>
+			  	<div class="input">
+					<%= text_field_tag(:name_of_accountant) %>
+				</div>
+			</div>
+			<div class="help_text">
+				<i>The name of your accountant</i>
+			</div>
+<!-- TEXT: accoutant's contact number -->
+			<div class="input_group">
+				<div class="label">
+					<%= label_tag(:contact_number_of_accountant, "Contact number:", :class => "text right") %>
+				</div>
+			  	<div class="input">
+					<%= text_field_tag(:contact_number_of_accountant) %>
+				</div>
+			</div>
+			<div class="help_text">
+				<i>Accountant's telephone number including country code, area code and number</i>
+			</div>
+<!-- TEXT: PR company -->
+			<div class="input_group">
+				<div class="label">
+					<%= label_tag(:name_of_pr_company, "PR company:", :class => "text right") %>
+				</div>
+			  	<div class="input">
+					<%= text_field_tag(:name_of_pr_company) %>
+				</div>
+			</div>
+			<div class="help_text">
+				<i>The name of your PR company</i>
+			</div>
+<!-- TEXT: PR contact person -->
+			<div class="input_group">
+				<div class="label">
+					<%= label_tag(:name_of_pr_contact_person, "PR contact person:", :class => "text right") %>
+				</div>
+			  	<div class="input">
+					<%= text_field_tag(:name_of_pr_contact_person) %>
+				</div>
+			</div>
+			<div class="help_text">
+				<i>Who is your PR contact person</i>
+			</div>
+<!-- TEXT: PR contact details -->
+			<div class="input_group">
+				<div class="label">
+					<%= label_tag(:contact_number_of_pr_company, "Contact number:", :class => "text right") %>
+				</div>
+			  	<div class="input">
+					<%= text_field_tag(:contact_number_of_pr_company) %>
+				</div>
+			</div>
+			<div class="help_text">
+				<i>PR company telephone number including country code, area code and number</i>
+			</div>
+<!-- TEXT: facebook url -->
+			<div class="input_group">
+				<div class="label">
+					<%= label_tag(:facebook_url, "Facebook url:", :class => "text right") %>
+				</div>
+			  	<div class="input">
+					<%= text_field_tag(:facebook_url) %>
+				</div>
+			</div>
+			<div class="help_text">
+				<i>What is the address of your facebook page</i>
+			</div>
+<!-- TEXT: twitter handle -->
+			<div class="input_group">
+				<div class="label">
+					<%= label_tag(:twitter_handle, "Twitter handle:", :class => "text right") %>
+				</div>
+			  	<div class="input">
+					<%= text_field_tag(:twitter_handle) %>
+				</div>
+			</div>
+			<div class="help_text">
+				<i>What is your twitter handle</i>
+			</div>			
+			<div class="line"></div>							
+			<h1>COMPANY INFORMATION</h1>
+<!-- TEXT: company name -->
+			<div class="input_group">
+				<div class="label">
+					<%= label_tag(:name_of_company, "Company name:", :class => "text right") %>
+				</div>
+			  	<div class="input">
+					<%= text_field_tag(:name_of_company) %>
+				</div>
+			</div>
+			<div class="help_text">
+				<i>The registered name of your company</i>
+			</div>
+<!-- TEXT: brand or label -->
+			<div class="input_group">
+				<div class="label">
+					<%= label_tag(:name_of_brand_or_label, "Brand name:", :class => "text right") %>
+				</div>
+			  	<div class="input">
+					<%= text_field_tag(:name_of_brand_or_label) %>
+				</div>
+			</div>
+			<div class="help_text">
+				<i>The name of your brand or label, if different from that of your company name</i>
+			</div>							
+<!-- TEXT: brand or label -->
+			<div class="input_group">
+				<div class="label">
+					<%= label_tag(:company_registration_number, "Company reg number:", :class => "text right") %>
+				</div>
+			  	<div class="input">
+					<%= text_field_tag(:company_registration_number) %>
+				</div>
+			</div>
+			<div class="help_text">
+				<i>The registration number of your company</i>
+			</div>									
+<!-- FILE: logo -->
+			<div class="input_group">
+				<div class="label">
+					<%= label_tag(:logo, "Logo:", :class => "text right") %>
+				</div>
+			  	<div class="input file">
+					<%= file_field_tag(:logo, :class => "") %>
+				</div>
+			</div>
+			<div class="help_text">
+				<i>The logo of your brand or label</i>
+			</div>
+<!-- TEXT: billing address -->
+			<div class="input_group">
+				<div class="label">
+					<%= label_tag(:billing_address, "Billing address:", :class => "text right") %>
+				</div>
+			  	<div class="input">
+					<%= text_field_tag(:billing_address) %>
+				</div>
+			</div>
+			<div class="help_text">
+				<i>Where should we send you your bills</i>
+			</div>
+<!-- TEXT: vat number -->
+			<div class="input_group">
+				<div class="label">
+					<%= label_tag(:vat_number, "VAT number:", :class => "text right") %>
+				</div>
+			  	<div class="input">
+					<%= text_field_tag(:vat_number) %>
+				</div>
+			</div>
+			<div class="help_text">
+				<i>What is your VAT number, if you have one</i>
+			</div>
+<!-- TEXT: company contact details -->
+			<div class="input_group">
+				<div class="label">
+					<%= label_tag(:contact_number_of_company, "Contact number:", :class => "text right") %>
+				</div>
+			  	<div class="input">
+					<%= text_field_tag(:contact_number_of_company) %>
+				</div>
+			</div>
+			<div class="help_text">
+				<i>Company telephone number including country code, area code and number</i>
+			</div>
+<!-- TEXT: designer / company biography-->
+			<div class="input_group">
+				<div class="label">
+					<%= label_tag(:designer_biography, "Biography:", :class => "text right") %>
+				</div>
+			  	<div class="input">
+					<%= text_field_tag(:designer_biography) %>
+				</div>
+			</div>
+			<div class="help_text">
+				<i>A brief designer or company biography</i>
+			</div>
+			<div class="line"></div>								
+			<h1>IMAGES<i style="font-size: 13px"> of past collections that are no larger than 1MB each</i></h1>
+<!-- FILE: past collection image 1 -->
+			<div class="input_group">
+				<div class="label">
+					<%= label_tag(:editorial_image_1, "Editorial image 1:", :class => "text right") %>
+				</div>
+			  	<div class="input file">
+					<%= file_field_tag(:editorial_image_1, :class => "") %>
+				</div>
+			</div>
+<!-- FILE: past collection image 2 -->
+			<div class="input_group">
+				<div class="label">
+					<%= label_tag(:editorial_image_2, "Editorial image 2:", :class => "text right") %>
+				</div>
+			  	<div class="input file">
+					<%= file_field_tag(:editorial_image_2, :class => "") %>
+				</div>
+			</div>
+<!-- FILE: past collection image 3 -->
+			<div class="input_group">
+				<div class="label">
+					<%= label_tag(:editorial_image_3, "Editorial image 3:", :class => "text right") %>
+				</div>
+			  	<div class="input file">
+					<%= file_field_tag(:editorial_image_3, :class => "") %>
+				</div>
+			</div>
+<!-- FILE: past collection image 4 -->
+			<div class="input_group">
+				<div class="label">
+					<%= label_tag(:editorial_image_4, "Editorial image 4:", :class => "text right") %>
+				</div>
+			  	<div class="input file">
+					<%= file_field_tag(:editorial_image_4, :class => "") %>
+				</div>
+			</div>
+<!-- FILE: past collection image 5 -->
+			<div class="input_group">
+				<div class="label">
+					<%= label_tag(:editorial_image_5, "Editorial image 5:", :class => "text right") %>
+				</div>
+			  	<div class="input file">
+					<%= file_field_tag(:editorial_image_5, :class => "") %>
+				</div>
+			</div>
+<!-- FILE: past collection image 6 -->
+			<div class="input_group">
+				<div class="label">
+					<%= label_tag(:editorial_image_6, "Editorial image 6:", :class => "text right") %>
+				</div>
+			  	<div class="input file">
+					<%= file_field_tag(:editorial_image_6, :class => "") %>
+				</div>
+			</div>
+<!-- FILE: past collection image 7 -->
+			<div class="input_group">
+				<div class="label">
+					<%= label_tag(:editorial_image_7, "Editorial image 7:", :class => "text right") %>
+				</div>
+			  	<div class="input file">
+					<%= file_field_tag(:editorial_image_7, :class => "") %>
+				</div>
+			</div>
+<!-- FILE: past collection image 8 -->
+			<div class="input_group">
+				<div class="label">
+					<%= label_tag(:editorial_image_8, "Editorial image 8:", :class => "text right") %>
+				</div>
+			  	<div class="input file">
+					<%= file_field_tag(:editorial_image_8, :class => "") %>
+				</div>
+			</div>
+		<div class="line"></div>								
+		<h1>PRESS AND MEDIA INSERTS <i style="font-size: 13px"> no larger than 1MB each</i></h1>
+<!-- FILE: press insert 1 -->
+		<div class="input_group">
+			<div class="label">
+				<%= label_tag(:press_insert_1, "Press insert 1:", :class => "text right") %>
+			</div>
+		  	<div class="input file">
+				<%= file_field_tag(:press_insert_1, :class => "") %>
+			</div>
+		</div>
+<!-- FILE: press insert 2 -->
+		<div class="input_group">
+			<div class="label">
+				<%= label_tag(:press_insert_2, "Press insert 2:", :class => "text right") %>
+			</div>
+		  	<div class="input file">
+				<%= file_field_tag(:press_insert__2, :class => "") %>
+			</div>
+		</div>
+<!-- FILE: press inserte 3 -->
+		<div class="input_group">
+			<div class="label">
+				<%= label_tag(:press_insert__3, "Press insert 3:", :class => "text right") %>
+			</div>
+		  	<div class="input file">
+				<%= file_field_tag(:press_insert__3, :class => "") %>
+			</div>
+		</div>
+<!-- FILE: press insert 4 -->
+		<div class="input_group">
+			<div class="label">
+				<%= label_tag(:press_insert_4, "Press insert 4:", :class => "text right") %>
+			</div>
+		  	<div class="input file">
+				<%= file_field_tag(:press_insert_4, :class => "") %>
+			</div>
+		</div>
+<!-- FILE: press insert 5 -->
+		<div class="input_group">
+			<div class="label">
+				<%= label_tag(:press_insert_5, "Press insert 5:", :class => "text right") %>
+			</div>
+		  	<div class="input file">
+				<%= file_field_tag(:press_insert_5, :class => "") %>
+			</div>
+		</div>
+<!-- FILE: press insert 6 -->
+		<div class="input_group">
+			<div class="label">
+				<%= label_tag(:press_insert_6, "Press insert 6:", :class => "text right") %>
+			</div>
+		  	<div class="input file">
+				<%= file_field_tag(:press_insert_6, :class => "") %>
+			</div>
+		</div>
+<!-- FILE: press insert 7 -->
+		<div class="input_group">
+			<div class="label">
+				<%= label_tag(:press_insert_7, "Press insert 7:", :class => "text right") %>
+			</div>
+		  	<div class="input file">
+				<%= file_field_tag(:press_insert_7, :class => "") %>
+			</div>
+		</div>
+<!-- FILE: press insert 8 -->
+		<div class="input_group">
+			<div class="label">
+				<%= label_tag(:press_insert_8, "Press insert 8:", :class => "text right") %>
+			</div>
+		  	<div class="input file">
+				<%= file_field_tag(:press_insert_8, :class => "") %>
+			</div>
+		</div>
+<!-- FILE: press insert 9 -->
+		<div class="input_group">
+			<div class="label">
+				<%= label_tag(:press_insert_9, "Press insert 9:", :class => "text right") %>
+			</div>
+		  	<div class="input file">
+				<%= file_field_tag(:press_insert_9, :class => "") %>
+			</div>
+		</div>
+<!-- FILE: press insert 10 -->
+		<div class="input_group">
+			<div class="label">
+				<%= label_tag(:epress_insert_10, "Press insert 10:", :class => "text right") %>
+			</div>
+		  	<div class="input file">
+				<%= file_field_tag(:press_insert_10, :class => "") %>
+			</div>
+		</div>
+		<div class="line"></div>								
+
+	  	<%= submit_tag "Submit", :style => "float: right;", :id => "submit_application"%>
+		<% end %>
+		<div style="height: 160px">
+		</div>
+	</div>
+</div>
+
+<script>
+// $(document).ready(function () {
+// 	$("#submit_application").on("click", function() {
+// 		$("#mask").show();
+// 	});	
+// });
+
+</script>

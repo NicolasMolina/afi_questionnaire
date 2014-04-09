@@ -4,6 +4,9 @@ Afi::Application.routes.draw do
   
   root :to => 'afi#index'
   
+  get "/questionnaire", :to => 'pages#questionnaire'
+  post '/submit_form', :to => 'pages#submit_form'
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
